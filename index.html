@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИИ-Ассистент для рекрутинговых агентств - Kairos</title>
+    
+    <!-- SEO мета-теги -->
+    <meta name="description" content="ИИ-ассистент для рекрутеров. Автоматизация скрининга резюме, поиска кандидатов и создания презентаций. Экономия 5 часов в день. ROI 480%.">
+    <meta name="keywords" content="ИИ рекрутинг, автоматизация HR, скрининг резюме, ИИ ассистент, рекрутинговое агентство">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph для соцсетей -->
+    <meta property="og:title" content="ИИ-Ассистент для рекрутеров - Kairos">
+    <meta property="og:description" content="Автоматизируйте рекрутинг с помощью ИИ. Экономия 5 часов в день, ROI 480%.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kairos-ai-recruiting.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    
+    <!-- Шрифты и стили остаются теми же -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Все стили из предыдущего кода + дополнения для сайта */
+        
+        /* Добавим фиксированную навигацию */
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #6366f1;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #6366f1;
+        }
+        
+        .nav-cta {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        /* Корректировка для мобильных */
+        .mobile-nav {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-nav {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: #6366f1;
+                cursor: pointer;
+            }
+        }
+        
+        /* Отступ для контента под фиксированную навигацию */
+        .page:first-child {
+            padding-top: 120px;
+        }
+        
+        /* Добавим плавную прокрутку */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Форма обратной связи */
+        .contact-form {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 3rem auto;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 2px solid #6366f1;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+        
+        .form-submit {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        /* Cookie уведомление */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1f2937;
+            color: white;
+            padding: 1.5rem;
+            z-index: 1001;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+        
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .cookie-accept {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Фиксированная навигация -->
+    <nav class="fixed-nav">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">KAIROS</a>
+            
+            <ul class="nav-links">
+                <li><a href="#problem">Проблема</a></li>
+                <li><a href="#solution">Решение</a></li>
+                <li><a href="#results">Результаты</a></li>
+                <li><a href="#pricing">Цены</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            
+            <a href="https://t.me/dariasherbackova?text=Здравствуйте!%20Интересует%20ИИ-ассистент%20для%20рекрутинга.%20Хочу%20получить%20консультацию." target="_blank" class="nav-cta">Получить консультацию</a>
+            
+            <button class="mobile-nav">☰</button>
+        </div>
+    </nav>
+
+    <!-- Основной контент - используем все страницы из предыдущего кода -->
+    <!-- Добавляем id для навигации -->
+    
+    <div class="page cover" id="home">
+        <!-- Весь контент обложки -->
+    </div>
+
+    <div class="page" id="problem">
+        <!-- Контент страницы с проблемами -->
+    </div>
+
+    <div class="page" id="solution">
+        <!-- Контент страницы с решениями -->
+    </div>
+
+    <div class="page" id="results">
+        <!-- Контент страницы с результатами -->
+    </div>
+
+    <div class="page" id="pricing">
+        <!-- Контент страницы с тарифами -->
+    </div>
+
+    <div class="page" id="process">
+        <!-- Контент страницы с процессом -->
+    </div>
+
+    <div class="page" id="contact">
+        <!-- Контент страницы о компании + форма -->
+        <div class="container">
+            <!-- Существующий контент о компании -->
+            
+            <!-- Добавляем форму обратной связи -->
+            <div class="contact-form">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: #1f2937;">Получить консультацию</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Имя *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Компания</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Расскажите о ваших задачах в рекрутинге..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">📱 Отправить в Telegram</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie уведомление -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <p>Мы используем cookies для улучшения работы сайта. Продолжая использование сайта, вы соглашаетесь с использованием cookies.</p>
+            <button class="cookie-accept" onclick="acceptCookies()">Принять</button>
+        </div>
+    </div>
+
+    <script>
+        // Навигация
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80; // Отступ для фиксированной навигации
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = target.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Форма обратной связи - перенаправление в Telegram
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Собираем данные из формы
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Формируем сообщение для Telegram
+            let telegramMessage = `Здравствуйте! Заявка с сайта на ИИ-ассистент для рекрутинга:%0A%0A`;
+            telegramMessage += `👤 Имя: ${name}%0A`;
+            if (company) telegramMessage += `🏢 Компания: ${company}%0A`;
+            telegramMessage += `📧 Email: ${email}%0A`;
+            if (phone) telegramMessage += `📱 Телефон: ${phone}%0A`;
+            if (message) telegramMessage += `💬 Сообщение: ${message}%0A`;
+            
+            // Перенаправляем в Telegram
+            window.open(`https://t.me/dariasherbackova?text=${telegramMessage}`, '_blank');
+            
+            // Показываем уведомление
+            alert('Сейчас откроется Telegram для отправки сообщения');
+            
+            // Очищаем форму
+            this.reset();
+        });
+
+        // Cookie уведомление
+        function showCookieBanner() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookieBanner').classList.add('show');
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Показываем cookie banner через 2 секунды после загрузки
+        setTimeout(showCookieBanner, 2000);
+
+        // Анимация при скролле (существующий код)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Активная навигация при скролле
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.fixed-nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Google Analytics (замените на свой ID)
+        // gtag('config', 'GA_MEASUREMENT_ID');
+
+        // Яндекс.Метрика (замените на свой ID)
+        // ym(XXXXXX, 'init', {});
+    </script>
+
+    <!-- Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
+    
+    <!-- Яндекс.Метрика -->
+    <!-- <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(XXXXXX, "init", {});
+    </script> -->
+</body>
+</html>
